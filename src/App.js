@@ -105,7 +105,6 @@ function App() {
 
           <div className="project-card">
             <div className="project-image">
-              {/* Replace with your second project image URL */}
               <img src={RESEARCH_PNG} alt="Project Name" />
             </div>
             <div className="project-info">
@@ -133,7 +132,8 @@ function App() {
         <form className="contact-form" onSubmit={handleSubmit}>
           <label htmlFor="name">Name</label>
           <input type="text" id="name" name="name" placeholder="Your name" required />
-
+          <label htmlFor="email">Mobile</label>
+          <input type="mobile" id="mobile" name="mobile" placeholder="Your mobile" />
           <label htmlFor="email">Email</label>
           <input type="email" id="email" name="email" placeholder="Your email" required />
 

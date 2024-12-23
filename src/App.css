@@ -116,6 +116,7 @@ p {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  align-self: center;
   transition: background-color 0.3s ease;
 }
 

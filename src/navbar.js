@@ -18,7 +18,7 @@ const NavBar = () => {
             Home
           </Link>
         </li>
-        <li>
+        {/* <li>
           <Link
             to="experience"
             smooth={true}
@@ -28,7 +28,7 @@ const NavBar = () => {
           >
             Experience
           </Link>
-        </li>
+        </li> */}
         <li>
           <Link
             to="projects"
