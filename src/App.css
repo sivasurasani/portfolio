@@ -33,6 +33,45 @@
   color: #0073b1; /* LinkedIn color */
 }
 
+/* Style for social links */
+.social-links {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Style for each individual icon */
+.social-icon {
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Tooltip styling */
+.social-icon::after {
+  content: attr(title);  /* Display the text inside the 'title' attribute */
+  position: absolute;
+  bottom: 120%;  /* Show the tooltip above the icon */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;  /* Dark background for tooltip */
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+  white-space: nowrap;
+}
+
+/* Show tooltip when hovered */
+.social-icon:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+
 /* Profile photo styling */
 .home-right {
   flex: 1;

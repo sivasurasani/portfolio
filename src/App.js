@@ -5,6 +5,9 @@ import './App.css';
 import profilePic from './profile_pic.jpeg'; // Import the image from the src folder
 import A11Y from './A11Y.png';
 import RESEARCH_PNG from './Result_3.png';
+import resume from './resume.pdf'
+import { FaFilePdf } from 'react-icons/fa';
+
 
 
 function App() {
@@ -56,16 +59,21 @@ function App() {
           <p>I enjoy building projects that solve real-world problems and building efficient applications which are highly secure.</p>
           <p> Visit my links below to know more about me</p>
           <div className="social-links">
-            <a href="https://github.com/sivasurasani" target="_blank" rel="noopener noreferrer">
-              <FaGithub size={30} />
-            </a>
-            <a href="https://www.linkedin.com/in/siva-kumar-surasani-036a8414a/" target="_blank" rel="noopener noreferrer">
-              <FaLinkedin size={30} />
-            </a>
-            <a href="https://leetcode.com/u/sivasurasani/" target="_blank" rel="noopener noreferrer">
-              <FaCode size={30} />
-            </a>
-          </div>
+          <a href="https://github.com/sivasurasani" target="_blank" rel="noopener noreferrer" className="social-icon" title="GitHub">
+            <FaGithub size={30} />
+          </a>
+          <a href="https://www.linkedin.com/in/siva-kumar-surasani-036a8414a/" target="_blank" rel="noopener noreferrer" className="social-icon" title="LinkedIn">
+            <FaLinkedin size={30} />
+          </a>
+          <a href="https://leetcode.com/u/sivasurasani/" target="_blank" rel="noopener noreferrer" className="social-icon" title="LeetCode">
+            <FaCode size={30} />
+          </a>
+          <a href={resume} download="Siva_Resume.pdf" className="social-icon" title="Resume">
+            <FaFilePdf size={30} />
+          </a>
+        </div>
+
+
         </div>
         <div className="home-right">
           <img src={profilePic} alt="Your Name" className="profile-photo" />
