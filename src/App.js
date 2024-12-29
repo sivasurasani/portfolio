@@ -5,7 +5,9 @@ import './App.css';
 import profilePic from './profile_pic.jpeg'; // Import the image from the src folder
 import A11Y from './A11Y.png';
 import RESEARCH_PNG from './Result_3.png';
+import Semantics from './semantics.png';
 import resume from './resume.pdf'
+import os_project_report from './Operating_systems_project_report.pdf'
 import { FaFilePdf } from 'react-icons/fa';
 
 
@@ -130,6 +132,39 @@ function App() {
               </a>
             </div>
           </div>
+          <div className="project-card">
+            <div className="project-image">
+              <img src={Semantics} alt="Project Name" />
+            </div>
+            <div className="project-info">
+              <h2>A survey on refcounting bugs</h2>
+              <p>
+              This survey is based on the existing work on analysing the refcounting bugs in kernel systems.
+              </p>
+              <a href={os_project_report} download="OS_project_report.pdf" className="social-icon" title=" Download Report">
+            <FaFilePdf size={30} />
+          </a>
+            </div>
+          </div>
+          {/* <div className="project-card">
+            <div className="project-image">
+              <img src={RESEARCH_PNG} alt="Project Name" />
+            </div>
+            <div className="project-info">
+              <h2>Research paper recommendation system</h2>
+              <p>
+              This project is a Flask-based web application that provides research paper recommendations based on an input paper title. Users can enter a research paper title, and the app will suggest similar papers using a pre-trained recommendation model.
+              </p>
+              <a
+                href="https://github.com/sivasurasani/research_paper_recommendation_system"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="github-link"
+              >
+                View on GitHub
+              </a>
+            </div>
+          </div> */}
         </div>
       </section>
 
