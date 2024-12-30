@@ -1,43 +1,67 @@
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    background-color: #333;
-    color: white;
-    position: fixed;
-    width: 93%;
-    top: 0;
-    z-index: 1000;
+  display: flex;
+  justify-content: space-between; /* Keeps brand and links aligned properly */
+  align-items: center;
+  max-width: 1200px; /* Add a maximum width to center content */
+  margin: 0 auto; /* Center the navbar horizontally */
+  padding: 0 20px; /* Add horizontal padding */
+  height: 60px;
+  background-color: #333;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.navbar-links {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-links li {
+  margin: 0 15px;
+}
+
+.navbar-links a {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+.navbar-links a:hover {
+  color: #00bcd4;
+}
+.navbar-brand{
+  color: #f4f4f4;
+}
+
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column; /* Stack brand and links */
+    align-items: flex-start;
+    padding: 0 10px;
   }
-  
-  .navbar-brand {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: white;
-  }
-  
+
   .navbar-links {
-    list-style: none;
+    flex-direction: column;
+    background-color: #333;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    display: none;
+  }
+
+  .navbar-links.show {
     display: flex;
-    gap: 1.5rem;
-    margin: 0;
-    padding: 0;
   }
-  
+
   .navbar-links li {
-    display: inline;
+    margin: 10px 0;
   }
-  
-  .navbar-links a {
-    text-decoration: none;
-    color: white;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: color 0.3s ease;
-  }
-  
-  .navbar-links a:hover {
-    color: #00bcd4;
-  }
-  
+}
