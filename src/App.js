@@ -168,7 +168,31 @@ function App() {
         </div>
       </section>
 
+    <section  id="Research" className="section research-section">
+    <div class="research-cards">
+  <h2 class="cards-heading">Research Journey</h2>
+  <div class="research-card">
+    <h3>2023</h3>
+    <p style={{'margin-bottom': '20px'}}>
+  After starting my master's in Computer Science at the University of North Texas in 2023, I began volunteering as a Research Assistant under Dr. Wajdi Aljedaani. My research focused on accessibility, where I contributed to the development of a chatbot designed to guide developers in creating accessible websites.
+</p>
+<p style={{'margin-bottom': '20px'}}>
+  I played an active role in web scraping data from the WCAG (Web Content Accessibility Guidelines) website and utilizing it to build a robust model. This experience was a tremendous learning opportunity, allowing me to conceptualize and implement a complete solution while deepening my understanding of accessibility principles and practical machine learning techniques.
+</p>
 
+  </div>
+  <div class="research-card">
+    <h3>2024</h3>
+    <p style={{'margin-bottom': '20px'}}>
+    In 2024, I began working under Dr. Sanjukta Bhowmick on advanced topics in graph theory. My research focuses on areas such as dynamic updates of edges and nodes in graphs, K-core decomposition, and graph anonymization.
+</p>
+<p style={{'margin-bottom': '20px'}}>
+In the summer of 2024, I contributed to a material science project, focusing on graph theory, community detection algorithms, and data privacy. I also worked on digitizing plots and analyzing stress, strain, and work-hardening curves of alloys using Python, enhancing my technical expertise and interdisciplinary skills. Refer this github link for more details.
+</p>
+  </div>
+</div>
+
+    </section>
 
       <section id="contact" className="section contact-section">
         <p>Reach out to me!</p>

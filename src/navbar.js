@@ -18,17 +18,7 @@ const NavBar = () => {
             Home
           </Link>
         </li>
-        {/* <li>
-          <Link
-            to="experience"
-            smooth={true}
-            duration={500}
-            spy={true}
-            offset={-70}
-          >
-            Experience
-          </Link>
-        </li> */}
+       
         <li>
           <Link
             to="projects"
@@ -38,6 +28,17 @@ const NavBar = () => {
             offset={-70}
           >
             Projects
+          </Link>
+        </li>
+        <li>
+          <Link
+            to="Research"
+            smooth={true}
+            duration={500}
+            spy={true}
+            offset={-70}
+          >
+            Research Journey
           </Link>
         </li>
         <li>
