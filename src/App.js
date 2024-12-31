@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { FaGithub, FaLinkedin, FaCode } from 'react-icons/fa';
+import { FaPython, FaJava, FaPhp, FaDatabase, FaJs} from 'react-icons/fa';
+import { GiArtificialIntelligence } from 'react-icons/gi';
+import { SiJavascript } from 'react-icons/si';
 import NavBar from './navbar';
 import './App.css';
 import profilePic from './profile_pic.jpeg'; // Import the image from the src folder
@@ -167,7 +170,47 @@ function App() {
           </div> */}
         </div>
       </section>
-
+      <section id="skills" className="section skills-section">
+        <h1>Best Skills</h1>
+        <div className="skills-container">
+          <div className="skill-card">
+            <FaPython size={50} color="#3776AB" />
+            <p>Python</p>
+          </div>
+          <div className="skill-card">
+            <FaPhp size={50} color="#f89820" />
+            <p>PHP</p>
+          </div>
+          <div className="skill-card">
+            <FaJava size={50} color="#f89820" />
+            <p>Java</p>
+          </div>
+          <div className="skill-card">
+            <GiArtificialIntelligence size={50} color="#E34F26" />
+            <p>Machine Learning</p>
+          </div>
+          <div className="skill-card">
+            <SiJavascript size={50} color="#1572B6" />
+            <p>JQuery</p>
+          </div>
+          <div className="skill-card">
+            <FaJs size={50} color="#F7DF1E" />
+            <p>JavaScript</p>
+          </div>
+          <div className="skill-card">
+            <FaCode size={50} color="#F7DF1E" />
+            <p>GoLang</p>
+          </div>
+          <div className="skill-card">
+            <FaDatabase size={50} color="#F7DF1E" />
+            <p>MongoDB</p>
+          </div>
+          <div className="skill-card">
+            <FaDatabase size={50} color="#F7DF1E" />
+            <p>Mysql</p>
+          </div>
+        </div>
+      </section>
     <section  id="Research" className="section research-section">
     <div class="research-cards">
   <h2 class="cards-heading">Research Journey</h2>
