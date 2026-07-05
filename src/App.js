@@ -6,6 +6,7 @@ import {
   FaFilePdf,
   FaGithub,
   FaLinkedin,
+  FaPenNib,
   FaPaperPlane,
   FaPython,
 } from 'react-icons/fa';
@@ -101,6 +102,16 @@ const researchTimeline = [
     title: 'RAG, Graphs, and Scientific AI',
     details:
       'Built RAG workflows with LangChain, OpenAI, Gemini, Flask, GCP, Firestore, and FAISS while continuing research in graph privacy and scientific data intelligence.',
+  },
+];
+
+const blogs = [
+  {
+    title: 'Dynamic Time Warping for Time-Series Root Cause Analysis',
+    summary:
+      'A practical walkthrough of how DTW compares industrial sensor signals that shift in time, with a small Python example for anomaly investigation.',
+    status: 'Medium draft ready',
+    tags: ['DTW', 'Time Series', 'Edge AI'],
   },
 ];
 
@@ -254,6 +265,32 @@ function App() {
                 <span className="year">{item.year}</span>
                 <h3>{item.title}</h3>
                 <p>{item.details}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section id="blogs" className="section blogs-section">
+          <div className="section-heading">
+            <p className="eyebrow">Read my blogs</p>
+            <h2>Technical Writing</h2>
+          </div>
+          <div className="blog-list">
+            {blogs.map((blog) => (
+              <article className="blog-card" key={blog.title}>
+                <div className="blog-icon" aria-hidden="true">
+                  <FaPenNib />
+                </div>
+                <div className="blog-content">
+                  <div className="tag-row">
+                    {blog.tags.map((tag) => (
+                      <span key={tag}>{tag}</span>
+                    ))}
+                  </div>
+                  <h3>{blog.title}</h3>
+                  <p>{blog.summary}</p>
+                  <span className="blog-status">{blog.status}</span>
+                </div>
               </article>
             ))}
           </div>

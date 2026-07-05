@@ -208,6 +208,7 @@ p {
 }
 
 .projects-section,
+.blogs-section,
 .contact-section {
   background: #ffffff;
 }
@@ -365,6 +366,46 @@ p {
   margin-bottom: 16px;
 }
 
+.blog-list {
+  display: grid;
+  gap: 18px;
+}
+
+.blog-card {
+  align-items: start;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: 0 12px 32px rgba(24, 36, 52, 0.08);
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 58px minmax(0, 1fr);
+  padding: 24px;
+}
+
+.blog-icon {
+  align-items: center;
+  background: #e9f4f7;
+  border-radius: 8px;
+  color: var(--accent);
+  display: flex;
+  font-size: 1.4rem;
+  height: 58px;
+  justify-content: center;
+  width: 58px;
+}
+
+.blog-content p {
+  max-width: 760px;
+}
+
+.blog-status {
+  color: var(--green);
+  display: inline-flex;
+  font-size: 0.9rem;
+  font-weight: 900;
+}
+
 .contact-panel {
   align-items: start;
   display: grid;
@@ -484,6 +525,10 @@ p {
 
   .contact-form {
     padding: 18px;
+  }
+
+  .blog-card {
+    grid-template-columns: 1fr;
   }
 
   .popup {
