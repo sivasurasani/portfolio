@@ -240,6 +240,24 @@ p {
   width: 100%;
 }
 
+.project-placeholder {
+  align-items: center;
+  background:
+    linear-gradient(135deg, rgba(11, 114, 133, 0.14), rgba(195, 123, 18, 0.16)),
+    #eef4f5;
+  display: flex;
+  justify-content: center;
+  padding: 24px;
+}
+
+.project-placeholder span {
+  color: var(--ink);
+  font-size: 1.35rem;
+  font-weight: 900;
+  line-height: 1.2;
+  text-align: center;
+}
+
 .project-info {
   display: flex;
   flex: 1;

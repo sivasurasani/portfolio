@@ -74,6 +74,12 @@ const projects = [
     cta: 'Download report',
     download: 'OS_project_report.pdf',
   },
+  {
+    title: 'Grant Writing Assistant',
+    description:
+      'A Flask-based assistant that uses LangChain, FAISS, Google GenAI, Firestore, and PDF reasoning workflows to summarize documents, answer proposal questions, and assemble structured grant content.',
+    tags: ['RAG', 'Flask', 'LLM'],
+  },
 ];
 
 const skills = [
@@ -148,16 +154,16 @@ function App() {
       <main>
         <section id="home" className="section home-section">
           <div className="home-copy">
-            <p className="eyebrow">Computer Science graduate student and research assistant</p>
+            <p className="eyebrow">Machine Learning Engineer and backend developer</p>
             <h1>Siva Kumar Surasani</h1>
             <p className="hero-summary">
-              I build secure APIs, backend systems, and applied AI tools that turn research ideas
-              into usable software.
+              I build edge AI systems, secure backend APIs, and applied machine learning tools
+              for industrial sensor data, research workflows, and production software.
             </p>
             <div className="hero-details">
-              <span>University of North Texas</span>
-              <span>Backend Development</span>
-              <span>Machine Learning</span>
+              <span>Machine Learning Engineer at Micro.AI</span>
+              <span>Python, Go, Flask, React.js</span>
+              <span>Edge AI and RAG Systems</span>
             </div>
             <div className="hero-actions">
               <a href="#projects" className="primary-button">
@@ -198,9 +204,15 @@ function App() {
           <div className="projects-container">
             {projects.map((project) => (
               <article className="project-card" key={project.title}>
-                <div className="project-image">
-                  <img src={project.image} alt={project.alt} />
-                </div>
+                {project.image ? (
+                  <div className="project-image">
+                    <img src={project.image} alt={project.alt} />
+                  </div>
+                ) : (
+                  <div className="project-image project-placeholder" aria-hidden="true">
+                    <span>{project.title}</span>
+                  </div>
+                )}
                 <div className="project-info">
                   <div className="tag-row">
                     {project.tags.map((tag) => (
@@ -209,16 +221,18 @@ function App() {
                   </div>
                   <h3>{project.title}</h3>
                   <p>{project.description}</p>
-                  <a
-                    href={project.href}
-                    target={project.download ? undefined : '_blank'}
-                    rel={project.download ? undefined : 'noopener noreferrer'}
-                    download={project.download}
-                    className="text-link"
-                  >
-                    {project.download ? <FaFilePdf aria-hidden="true" /> : <FaExternalLinkAlt aria-hidden="true" />}
-                    {project.cta}
-                  </a>
+                  {project.href && (
+                    <a
+                      href={project.href}
+                      target={project.download ? undefined : '_blank'}
+                      rel={project.download ? undefined : 'noopener noreferrer'}
+                      download={project.download}
+                      className="text-link"
+                    >
+                      {project.download ? <FaFilePdf aria-hidden="true" /> : <FaExternalLinkAlt aria-hidden="true" />}
+                      {project.cta}
+                    </a>
+                  )}
                 </div>
               </article>
             ))}
