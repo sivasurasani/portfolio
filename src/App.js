@@ -1,20 +1,15 @@
 import React, { useState } from 'react';
 import {
   FaCode,
-  FaDatabase,
   FaDownload,
   FaExternalLinkAlt,
   FaFilePdf,
   FaGithub,
-  FaJava,
   FaLinkedin,
   FaPaperPlane,
-  FaPhp,
   FaPython,
-  FaServer,
 } from 'react-icons/fa';
 import { GiArtificialIntelligence } from 'react-icons/gi';
-import { SiJavascript } from 'react-icons/si';
 import NavBar from './navbar';
 import './App.css';
 import profilePic from './profile_pic.jpeg';
@@ -43,6 +38,12 @@ const links = [
 ];
 
 const projects = [
+  {
+    title: 'Grant Writing Assistant',
+    description:
+      'A Flask-based assistant that uses LangChain, FAISS, Google GenAI, Firestore, and PDF reasoning workflows to summarize documents, answer proposal questions, and assemble structured grant content.',
+    tags: ['RAG', 'Flask', 'LLM'],
+  },
   {
     title: 'Accessibility ChatBot',
     image: A11Y,
@@ -74,24 +75,12 @@ const projects = [
     cta: 'Download report',
     download: 'OS_project_report.pdf',
   },
-  {
-    title: 'Grant Writing Assistant',
-    description:
-      'A Flask-based assistant that uses LangChain, FAISS, Google GenAI, Firestore, and PDF reasoning workflows to summarize documents, answer proposal questions, and assemble structured grant content.',
-    tags: ['RAG', 'Flask', 'LLM'],
-  },
 ];
 
 const skills = [
   { name: 'Python', icon: <FaPython />, tone: 'blue' },
-  { name: 'PHP', icon: <FaPhp />, tone: 'indigo' },
-  { name: 'Java', icon: <FaJava />, tone: 'orange' },
   { name: 'Machine Learning', icon: <GiArtificialIntelligence />, tone: 'red' },
-  { name: 'JavaScript', icon: <SiJavascript />, tone: 'yellow' },
-  { name: 'jQuery', icon: <FaCode />, tone: 'blue' },
-  { name: 'Go', icon: <FaServer />, tone: 'cyan' },
-  { name: 'MongoDB', icon: <FaDatabase />, tone: 'green' },
-  { name: 'MySQL', icon: <FaDatabase />, tone: 'teal' },
+  { name: 'Agentic AI', icon: <FaCode />, tone: 'green' },
 ];
 
 const researchTimeline = [
