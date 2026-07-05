@@ -1,70 +1,46 @@
-# Getting Started with Create React App
+# Siva Kumar Surasani Portfolio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+React portfolio site for projects, skills, research work, resume download, and a Formspree-powered contact form.
 
-## Available Scripts
+## Run Locally
 
-In the project directory, you can run:
+```bash
+npm install
+npm start
+```
 
-### `npm start`
+The development server runs at `http://localhost:3000`.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Production Build
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```bash
+npm run build
+```
 
-### `npm test`
+The optimized static site is generated in the `build` folder.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Host on Netlify
 
-### `npm run build`
+This repo includes `netlify.toml`, so Netlify can build and publish the app automatically.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Push this folder to GitHub.
+2. In Netlify, choose **Add new site** then **Import an existing project**.
+3. Select the GitHub repository.
+4. Use these settings:
+   - Build command: `npm run build`
+   - Publish directory: `build`
+5. Deploy the site.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Host on Vercel
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Push this folder to GitHub.
+2. In Vercel, choose **Add New Project**.
+3. Select the GitHub repository.
+4. Vercel should detect Create React App automatically.
+5. Deploy with:
+   - Build command: `npm run build`
+   - Output directory: `build`
 
-### `npm run eject`
+## Contact Form
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The contact form posts to Formspree. To use a different inbox, replace the endpoint in `src/App.js`.
