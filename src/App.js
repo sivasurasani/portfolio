@@ -111,14 +111,112 @@ const blogs = [
     summary:
       'A practical walkthrough of how DTW compares industrial sensor signals that shift in time, with a small Python example for anomaly investigation.',
     status: 'Read on portfolio',
-    href: '#dtw-blog',
+    href: '/blog',
     tags: ['DTW', 'Time Series', 'Edge AI'],
   },
 ];
 
+function BlogArticle() {
+  return (
+    <main className="blog-page">
+      <section className="section blog-article-section">
+        <article className="blog-article">
+          <a href="/" className="text-link article-back-link">
+            Back to portfolio
+          </a>
+          <p className="eyebrow">Blog</p>
+          <h1>Dynamic Time Warping for Time-Series Root Cause Analysis</h1>
+          <p className="article-lead">
+            Industrial systems generate continuous sensor streams: temperature, vibration,
+            pressure, flow rate, motor current, and other signals. When a machine behaves
+            abnormally, the key question is not only whether something changed, but which
+            signal changed first and how closely that behavior matches a known fault pattern.
+          </p>
+
+          <h2>Why DTW Helps</h2>
+          <p>
+            Dynamic Time Warping compares the shape of two time-series signals even when one
+            signal is delayed, stretched, or compressed in time. This matters because two
+            machines can show the same physical behavior at slightly different speeds.
+          </p>
+          <p>
+            A strict point-by-point comparison may treat those signals as very different. DTW
+            can align similar shapes across shifted timestamps, which makes it useful for
+            comparing sensor behavior during startup, load changes, and early fault patterns.
+          </p>
+
+          <h2>A Simple Example</h2>
+          <p>
+            In this example, the observed signal follows the healthy pattern, but the rise is
+            delayed. DTW gives us a flexible similarity score for that shifted behavior.
+          </p>
+          <pre>
+            <code>{`def dtw_distance(series_a, series_b):
+    n = len(series_a)
+    m = len(series_b)
+
+    dp = [[float("inf")] * (m + 1) for _ in range(n + 1)]
+    dp[0][0] = 0
+
+    for i in range(1, n + 1):
+        for j in range(1, m + 1):
+            cost = abs(series_a[i - 1] - series_b[j - 1])
+            dp[i][j] = cost + min(
+                dp[i - 1][j],
+                dp[i][j - 1],
+                dp[i - 1][j - 1],
+            )
+
+    return dp[n][m]
+
+
+healthy = [1, 2, 3, 5, 6, 5, 3, 2, 1]
+observed = [1, 1, 2, 3, 5, 6, 5, 3, 2, 1]
+fault_pattern = [1, 2, 4, 8, 9, 7, 4, 2, 1]
+
+print("Healthy vs observed:", dtw_distance(healthy, observed))
+print("Fault vs observed:", dtw_distance(fault_pattern, observed))`}</code>
+          </pre>
+
+          <h2>Using DTW for Root Cause Analysis</h2>
+          <p>
+            In a real industrial system, we usually compare many synchronized sensor streams.
+            When an anomaly appears, each stream can be compared against historical healthy
+            behavior and known fault signatures. The sensors with the largest deviation from
+            healthy behavior, or the closest match to a known fault, become strong root cause
+            candidates.
+          </p>
+          <ol>
+            <li>Collect a recent sensor window around the anomaly.</li>
+            <li>Normalize each stream so scale differences do not dominate the score.</li>
+            <li>Compare each stream with healthy baselines using DTW.</li>
+            <li>Compare each stream with known fault signatures.</li>
+            <li>Rank sensors by distance and timing of deviation.</li>
+          </ol>
+
+          <h2>Why This Matters on Edge Devices</h2>
+          <p>
+            In edge AI systems, latency and bandwidth matter. A lightweight DTW workflow can run
+            close to the machine, identify suspicious sensor channels, and send useful summaries
+            upstream instead of streaming everything to the cloud.
+          </p>
+
+          <h2>Final Thoughts</h2>
+          <p>
+            DTW is practical because machines do not always fail on a perfectly aligned timeline.
+            When combined with anomaly detection, known fault signatures, and edge deployment, it
+            helps move from detecting a problem to explaining where that problem likely started.
+          </p>
+        </article>
+      </section>
+    </main>
+  );
+}
+
 function App() {
   const [popupMessage, setPopupMessage] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const isBlogPage = window.location.pathname.replace(/\/$/, '') === '/blog';
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -150,8 +248,11 @@ function App() {
 
   return (
     <div className="App">
-      <NavBar />
+      <NavBar currentPage={isBlogPage ? 'blog' : 'home'} />
 
+      {isBlogPage ? (
+        <BlogArticle />
+      ) : (
       <main>
         <section id="home" className="section home-section">
           <div className="home-copy">
@@ -299,95 +400,6 @@ function App() {
           </div>
         </section>
 
-        <section id="dtw-blog" className="section blog-article-section">
-          <article className="blog-article">
-            <p className="eyebrow">Blog</p>
-            <h2>Dynamic Time Warping for Time-Series Root Cause Analysis</h2>
-            <p className="article-lead">
-              Industrial systems generate continuous sensor streams: temperature, vibration,
-              pressure, flow rate, motor current, and other signals. When a machine behaves
-              abnormally, the key question is not only whether something changed, but which
-              signal changed first and how closely that behavior matches a known fault pattern.
-            </p>
-
-            <h3>Why DTW Helps</h3>
-            <p>
-              Dynamic Time Warping compares the shape of two time-series signals even when one
-              signal is delayed, stretched, or compressed in time. This matters because two
-              machines can show the same physical behavior at slightly different speeds.
-            </p>
-            <p>
-              A strict point-by-point comparison may treat those signals as very different. DTW
-              can align similar shapes across shifted timestamps, which makes it useful for
-              comparing sensor behavior during startup, load changes, and early fault patterns.
-            </p>
-
-            <h3>A Simple Example</h3>
-            <p>
-              In this example, the observed signal follows the healthy pattern, but the rise is
-              delayed. DTW gives us a flexible similarity score for that shifted behavior.
-            </p>
-            <pre>
-              <code>{`def dtw_distance(series_a, series_b):
-    n = len(series_a)
-    m = len(series_b)
-
-    dp = [[float("inf")] * (m + 1) for _ in range(n + 1)]
-    dp[0][0] = 0
-
-    for i in range(1, n + 1):
-        for j in range(1, m + 1):
-            cost = abs(series_a[i - 1] - series_b[j - 1])
-            dp[i][j] = cost + min(
-                dp[i - 1][j],
-                dp[i][j - 1],
-                dp[i - 1][j - 1],
-            )
-
-    return dp[n][m]
-
-
-healthy = [1, 2, 3, 5, 6, 5, 3, 2, 1]
-observed = [1, 1, 2, 3, 5, 6, 5, 3, 2, 1]
-fault_pattern = [1, 2, 4, 8, 9, 7, 4, 2, 1]
-
-print("Healthy vs observed:", dtw_distance(healthy, observed))
-print("Fault vs observed:", dtw_distance(fault_pattern, observed))`}</code>
-            </pre>
-
-            <h3>Using DTW for Root Cause Analysis</h3>
-            <p>
-              In a real industrial system, we usually compare many synchronized sensor streams.
-              When an anomaly appears, each stream can be compared against historical healthy
-              behavior and known fault signatures. The sensors with the largest deviation from
-              healthy behavior, or the closest match to a known fault, become strong root cause
-              candidates.
-            </p>
-            <ol>
-              <li>Collect a recent sensor window around the anomaly.</li>
-              <li>Normalize each stream so scale differences do not dominate the score.</li>
-              <li>Compare each stream with healthy baselines using DTW.</li>
-              <li>Compare each stream with known fault signatures.</li>
-              <li>Rank sensors by distance and timing of deviation.</li>
-            </ol>
-
-            <h3>Why This Matters on Edge Devices</h3>
-            <p>
-              In edge AI systems, latency and bandwidth matter. A lightweight DTW workflow can
-              run close to the machine, identify suspicious sensor channels, and send useful
-              summaries upstream instead of streaming everything to the cloud.
-            </p>
-
-            <h3>Final Thoughts</h3>
-            <p>
-              DTW is practical because machines do not always fail on a perfectly aligned
-              timeline. When combined with anomaly detection, known fault signatures, and edge
-              deployment, it helps move from detecting a problem to explaining where that
-              problem likely started.
-            </p>
-          </article>
-        </section>
-
         <section id="contact" className="section contact-section">
           <div className="contact-panel">
             <div>
@@ -429,6 +441,7 @@ print("Fault vs observed:", dtw_distance(fault_pattern, observed))`}</code>
           )}
         </section>
       </main>
+      )}
     </div>
   );
 }

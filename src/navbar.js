@@ -8,26 +8,33 @@ const navItems = [
   { label: 'Projects', target: 'projects' },
   { label: 'Skills', target: 'skills' },
   { label: 'Research', target: 'research' },
-  { label: 'Blogs', target: 'blogs' },
+  { label: 'Blogs', target: 'blogs', href: '/blog' },
   { label: 'Contact', target: 'contact' },
 ];
 
-const NavBar = () => {
+const NavBar = ({ currentPage = 'home' }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const isBlogPage = currentPage === 'blog';
 
   return (
     <nav className="navbar" aria-label="Primary navigation">
       <div className="navbar-inner">
-        <Link
-          to="home"
-          smooth
-          duration={500}
-          offset={-80}
-          className="navbar-brand"
-          onClick={() => setIsOpen(false)}
-        >
-          Siva Kumar Surasani
-        </Link>
+        {isBlogPage ? (
+          <a href="/" className="navbar-brand" onClick={() => setIsOpen(false)}>
+            Siva Kumar Surasani
+          </a>
+        ) : (
+          <Link
+            to="home"
+            smooth
+            duration={500}
+            offset={-80}
+            className="navbar-brand"
+            onClick={() => setIsOpen(false)}
+          >
+            Siva Kumar Surasani
+          </Link>
+        )}
 
         <button
           className="menu-toggle"
@@ -42,17 +49,31 @@ const NavBar = () => {
         <ul className={`navbar-links ${isOpen ? 'show' : ''}`}>
           {navItems.map((item) => (
             <li key={item.target}>
-              <Link
-                to={item.target}
-                smooth
-                duration={500}
-                spy
-                offset={-80}
-                activeClass="active"
-                onClick={() => setIsOpen(false)}
-              >
-                {item.label}
-              </Link>
+              {item.href ? (
+                <a
+                  href={item.href}
+                  className={isBlogPage ? 'active' : undefined}
+                  onClick={() => setIsOpen(false)}
+                >
+                  {item.label}
+                </a>
+              ) : isBlogPage ? (
+                <a href={`/#${item.target}`} onClick={() => setIsOpen(false)}>
+                  {item.label}
+                </a>
+              ) : (
+                <Link
+                  to={item.target}
+                  smooth
+                  duration={500}
+                  spy
+                  offset={-80}
+                  activeClass="active"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              )}
             </li>
           ))}
         </ul>
